@@ -1,0 +1,25 @@
+__pycache__/
+*.pyc
+*.pyo
+.build/
+build/
+install/
+log/
+.vscode/
+.idea/
+*.swp
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+
+# ROS2/colcon (워크스페이스 루트에서 주로 생성되지만 안전하게 무시)
+build/
+install/
+log/

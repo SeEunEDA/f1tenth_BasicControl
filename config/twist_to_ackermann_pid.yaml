@@ -1,0 +1,23 @@
+twist_to_ackermann_pid:
+  ros__parameters:
+    # Topics & frame
+    cmd_vel_topic: "/cmd_vel"
+    odom_topic: "/odom"           # 필요시 런치에서 /ego_racecar/odom 으로 리맵
+    drive_topic: "/drive"
+    frame_id: "base_link"
+
+    # Vehicle & limits
+    wheelbase: 0.33
+    max_speed: 2.5                 # m/s
+    max_steering_deg: 28.0
+    rate_hz: 50.0
+    accel_limit: 2.0               # m/s^2
+    max_steer_rate_deg_s: 240.0    # deg/s
+
+    # PID & filters
+    kp: 0.8
+    ki: 0.2
+    kd: 0.04
+    i_limit: 2.0
+    vel_lpf_alpha: 0.2
+    stop_deadband: 0.05
