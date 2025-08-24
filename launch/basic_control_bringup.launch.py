@@ -9,7 +9,7 @@ from ament_index_python.packages import get_package_share_directory
 from pathlib import Path
 
 def generate_launch_description():
-    # 1) F1TENTH Gym 브릿지 포함 (f1tenth_gym_ros가 워크스페이스에 있어야 함)
+    # 1) F1TENTH Gym bridge 포함 (sim_ws에 f1tenth_gym_ros가 빌드되어 있어야 함)
     gym_share = Path(get_package_share_directory('f1tenth_gym_ros'))
     gym_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(str(gym_share / 'launch' / 'gym_bridge_launch.py'))
@@ -24,10 +24,8 @@ def generate_launch_description():
         name='twist_to_ackermann_pid',
         output='screen',
         parameters=[pid_params],
-        # 필요하면 오돔 리맵 예시:
+        # 필요 시 오돔 리맵:
         # remappings=[('/odom', '/ego_racecar/odom')],
     )
 
-    # *텔레옵 노드는 상호작용(키보드 포커스) 때문에 보통 별도 터미널에서 실행 권장*
     return LaunchDescription([gym_launch, pid_node])
-
