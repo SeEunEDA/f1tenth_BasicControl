@@ -108,21 +108,6 @@ ros2 param set /twist_to_ackermann_pid ki 0.0
 ros2 param set /twist_to_ackermann_pid accel_limit 1.2
 ros2 param set /twist_to_ackermann_pid max_steer_rate_deg_s 150
 
-튜닝 가이드(증상별)
-증상	조치
-가속 시 확 튐/떨림	kp↓, kd↑, accel_limit↓
-목표속도 도달이 느림	kp↑, accel_limit↑
-속도 진동/오버슈트	kd↑, kp↓, vel_lpf_alpha↓(0.1~0.2)
-정지에서 꿈틀거림	stop_deadband↑(0.07~0.1), ki↓ 또는 0
-직진 지그재그	max_steer_rate_deg_s↓(120~180), max_steering_deg↓(25~28)
-좌/우 반대	코드에서 delta = -delta 부호 반전 필요
-문제 해결(Quick Checklist)
-
-    /drive가 안 나옴 → 브링업 실행 여부, 노드 에러, 파라미터 로드 확인.
-
-    rqt_plot이 빈 화면 → 토픽 경로를 필드까지 넣기 (/cmd_v/data, /drive/drive/speed), Autoscale, 텔레옵 창 포커스 확인.
-
-    텔레옵 각속도 0 → u/o 또는 j/l 키 사용 중인지 확인.
 
 라이선스
 
